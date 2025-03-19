@@ -1,3 +1,4 @@
+# Create a VPC endpoint for SSM
 # locals {
 #   services = {
 #     "ec2messages" : {

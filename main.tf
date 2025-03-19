@@ -103,6 +103,7 @@ resource "aws_instance" "ssm_instance" {
   }
 }
 
+# If you want to create a private instance
 # resource "aws_instance" "ssm-private-instance" {
 #   ami                    = "ami-00bc358fb32983be0"
 #   instance_type          = "t2.micro"
@@ -127,26 +128,26 @@ resource "aws_db_subnet_group" "sbg_database" {
   }
 }
 
-# resource "aws_db_instance" "database" {
-#   identifier        = "ssm-database-example"
-#   allocated_storage = 50
-#   engine            = "mysql"
-#   engine_version    = "8.0"
-#   instance_class    = "db.t3.micro"
-#   username          = "root"
-#   password          = "pawsd098"
-#   skip_final_snapshot = true
-#   db_subnet_group_name = aws_db_subnet_group.sbg_database.name
-#   vpc_security_group_ids = [aws_security_group.ssm_sg_db.id]
-#   tags = {
-#     Name = "ssm-database-example"
-#   }
-# }
+resource "aws_db_instance" "database" {
+  identifier        = "ssm-database-example"
+  allocated_storage = 50
+  engine            = "mysql"
+  engine_version    = "8.0"
+  instance_class    = "db.t3.micro"
+  username          = "root"
+  password          = "pawsd098"
+  skip_final_snapshot = true
+  db_subnet_group_name = aws_db_subnet_group.sbg_database.name
+  vpc_security_group_ids = [aws_security_group.ssm_sg_db.id]
+  tags = {
+    Name = "ssm-database-example"
+  }
+}
 
 output "instance_id" {
   value = aws_instance.ssm_instance.id
 }
 
-# output "rds_endpoint" {
-#   value = aws_db_instance.database.endpoint
-# }
+output "rds_endpoint" {
+  value = aws_db_instance.database.endpoint
+}
