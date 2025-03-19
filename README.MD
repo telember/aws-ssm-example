@@ -2,13 +2,6 @@
 
 This project contains a Terraform module for managing AWS Systems Manager (SSM) resources.
 
-## Features
-
-- Manage SSM Parameters
-- Configure SSM Document
-- Set up SSM Maintenance Windows
-- Automate resource management with Terraform
-
 ## Prerequisites
 
 - [Terraform](https://www.terraform.io/downloads.html) installed
